@@ -36,3 +36,11 @@ from sklearn.model_selection import GridSearchCV
 
 rfc = RandomForestClassifier(n_estimators=5, random_state=0)
 rfc.fit(X_train,y_train)
+
+y_pred = rfc.predict(X_val)
+
+y_test = rfc.predict(X_test)
+
+print(accuracy_score(y_val, y_pred))
+results = pd.DataFrame({'PassengerId':ids, 'Survived':y_test})
+results.to_csv('titanic-predictions.csv', index=False)
