@@ -29,3 +29,10 @@ X_test = onehotencoder_test.fit_transform(X_test).toarray()
 
 from sklearn.cross_validation import train_test_split
 X_train, X_val, y_train, y_val = train_test_split(X, y, random_state=0)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import make_scorer, accuracy_score
+from sklearn.model_selection import GridSearchCV
+
+rfc = RandomForestClassifier(n_estimators=5, random_state=0)
+rfc.fit(X_train,y_train)
